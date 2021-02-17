@@ -1,0 +1,64 @@
+buildscript {
+    ext {
+        springBootVersion = '2.3.2.RELEASE'
+    }
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "com.palantir.gradle.docker:gradle-docker:0.26.0"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'com.palantir.docker'
+
+group 'me.parkprin.microservice'
+version '1.0-SNAPSHOT'
+
+bootJar {
+    mainClassName = 'me.parkprin.microservice.Application'
+    baseName = 'user-service-docker'
+    version =  '0.1.0'
+}
+jar.enabled=true
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    compileOnly 'org.projectlombok:lombok:1.18.8'
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile('org.springframework.session:spring-session-jdbc')
+    compile("org.mariadb.jdbc:mariadb-java-client")
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.springframework.security:spring-security-test')
+
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
+}
+
+task bashCopy(type: Copy) {
+
+    from "$rootDir/user-service/run.sh"
+    into "$buildDir/docker/"
+}
+docker {
+    name "${project.group}/${bootJar.baseName}"
+    copySpec.from("$rootDir/user-service/run.sh").into("libs")
+    copySpec.from(tasks.bootJar).into("libs")
+    buildArgs(['DEPENDENCY': "dependency"])
+}

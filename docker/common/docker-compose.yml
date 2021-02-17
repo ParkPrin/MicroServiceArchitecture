@@ -1,0 +1,6 @@
+version: '2'
+services:
+  user-service:
+    image: me.parkprin.microservice/user-service-docker:latest
+    ports:
+      - "8080:8080"

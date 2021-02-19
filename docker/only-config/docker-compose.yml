@@ -1,0 +1,6 @@
+version: '2'
+services:
+  configserver:
+    extends:
+      file: ../common/docker-compose.yml
+      service: configserver

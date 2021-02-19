@@ -1,4 +1,4 @@
-package me.parkprin.microservice;
+package me.parkprin.microservice.userservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

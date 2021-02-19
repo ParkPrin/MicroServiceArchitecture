@@ -60,5 +60,4 @@ docker {
     name "${project.group}/${bootJar.baseName}"
     copySpec.from("$rootDir/user-service/run.sh").into("libs")
     copySpec.from(tasks.bootJar).into("libs")
-    buildArgs(['DEPENDENCY': "dependency"])
 }

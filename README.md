@@ -14,6 +14,7 @@ this is MicroServiceArchitecture
 ```
 # 루트모듈에서 하위 모듈 도커이미지 생성하는 명령어
 $ ./gradlew user-service:docker
+$ ./gradlew confsvr:docker
 ```
 
 ```어

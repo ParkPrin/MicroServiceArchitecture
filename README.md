@@ -20,6 +20,7 @@ $ ./gradlew confsvr:docker
 ```어
 # 루트모듈에서 docker-compose.yml 스크립트 실행 명령
 docker-compose -f docker/common/docker-compose.yml up
+docker-compose -f docker/dev/docker-compose.yml up
 ```
 
 

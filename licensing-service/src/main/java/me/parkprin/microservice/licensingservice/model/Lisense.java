@@ -16,9 +16,31 @@ public class Lisense {
     @Column(name = "LISENSE_ID")
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "ORGANIZATION_ID")
+    private Organization organization;
+
+    @OneToOne(mappedBy = "lisense")
+    private Product product;
+
+    @Column(length = 150, name = "LISENSE_TYPE", nullable = false)
+    private String lisenseType;
+
+    @Column(name = "LISENSE_MAX", nullable = false)
+    private int lisenseMax;
+
+    @Column(name = "LISENSE_ALLOCATED", nullable = false)
+    private int lisenseAllocated;
+
+    @Column(length = 2000, name = "COMMENT")
+    private String comment;
 
 
-    public enum LisenseType {
-        ORDER, CANCEL
-    }
+
+
+
+
+
+
+
 }

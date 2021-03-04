@@ -24,3 +24,10 @@ docker-compose -f docker/dev/docker-compose.yml up
 ```
 
 
+## 데이터 모델링
+
+### 개념적 모델링
+![개념적 모델링](https://github.com/ParkPrin/MicroServiceArchitecture/blob/main/%EC%84%9C%EB%B9%84%EC%8A%A4%20%EB%AA%A8%EB%8D%B8%EB%A7%81/step1/%EA%B0%9C%EB%85%90%EC%A0%81%20%EB%AA%A8%EB%8D%B8%EB%A7%81%201%EB%8B%A8%EA%B3%84.svg)
+
+### 물리적 모델링
+![물리적 모델링](https://github.com/ParkPrin/MicroServiceArchitecture/blob/main/%EC%84%9C%EB%B9%84%EC%8A%A4%20%EB%AA%A8%EB%8D%B8%EB%A7%81/step1/%EB%85%BC%EB%A6%AC%EC%A0%81%20%EB%AA%A8%EB%8D%B8%EB%A7%81%201%EB%8B%A8%EA%B3%84.svg)
